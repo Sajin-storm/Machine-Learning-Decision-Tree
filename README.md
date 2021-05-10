@@ -209,7 +209,7 @@ a = plot_tree(classifier,
 ```
 
 #### We get this kind of tree diagram. 
-![Tree_Diagram](/Sample output images/Tree_Diagram.png)
+![Tree_Diagram](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Tree_Diagram.png?raw=true)
 
 Here's the documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) it'll be very helpful
 
