@@ -4,9 +4,9 @@ Disclaimer: I am just a student who has tried to study this on my own learning f
 Whatever is explained here is what I have understood myself. So, it may or maynot be correct .
 I'll provide with few links for some clarifications , if any furthur doubts arises you'll have to do your own research to clarify your own doubts.
 
-##Table of contents
+## Table of contents
 
-* [General info]
+* [General info](## General info)
 * [Technologies used]
 * [Code]
 	* [Necessary imports]
