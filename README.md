@@ -80,11 +80,11 @@ col_max = dataset_test_lm.max()
 
 Sample Output
 
-*Lm1 0.101473
-*Lm2 0.055696
-*Lm3 0.087793
-*Lm4 0.030696
-*Lm5 0.182670
+* Lm1 0.101473
+* Lm2 0.055696
+* Lm3 0.087793
+* Lm4 0.030696
+* Lm5 0.182670
      
 
 Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
