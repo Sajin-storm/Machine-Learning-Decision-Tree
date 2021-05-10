@@ -7,19 +7,19 @@ I'll provide with few links for some clarifications , if any furthur doubts aris
 ## Table of contents
 
 * [General info](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#general-info)
-* [Technologies used]
-* [Code]
-	* [Necessary imports]
-	* [Reading Excel files]
-	* [Seperating LM values from the entire sheet]
-	* [Finding max values from each LM column]
-	* [Creating a proper Dataframe for the test data]
-* [Machine learning parts]
-	* [Seperating features and classes for training and testing data]
-	* [Decision Tree (ML algorithm)]
-	* [Plots and Diagrams]
-	* [Getting the final result]
-	* [Finally arranging the values in descending order]
+* [Technologies used](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#technologies-used)
+* [Code](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#code)
+	* [Necessary imports](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#necessary-imports)
+	* [Reading Excel files](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#reading-excel-files)
+	* [Seperating LM values from the entire sheet](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-lm-values-from-the-entire-sheet)
+	* [Finding max values from each LM column](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#finding-max-values-from-each-lm-column)
+	* [Creating a proper Dataframe for the test data](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#creating-a-proper-dataframe-for-the-test-data)
+* [Machine learning parts](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#machine-learning-parts)
+	* [Seperating features and classes for training and testing data](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-features-and-classes-for-training-and-testing-data)
+	* [Decision Tree (ML algorithm)](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-features-and-classes-for-training-and-testing-data)
+	* [Plots and Diagrams](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#plots-and-diagrams)
+	* [Getting the final result](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#getting-the-final-result)
+	* [Finally arranging the values in descending order](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#getting-the-final-result)
 
 ## General info
 
