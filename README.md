@@ -6,7 +6,7 @@ I'll provide with few links for some clarifications , if any furthur doubts aris
 
 ## Table of contents
 
-* [General info](## General info)
+* [General info](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#general-info)
 * [Technologies used]
 * [Code]
 	* [Necessary imports]
