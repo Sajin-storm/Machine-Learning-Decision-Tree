@@ -158,7 +158,7 @@ x_test = np.asarray(features_test)
 #here we only have features because we need to find class using ML
 ```
 
-###Decision Tree (ML algorithm)
+### Decision Tree (ML algorithm)
 
 sklearn provides this machine learning algorithm. we import DecisionTreeClassifier from sklearn.tree.
 * And to be honest I don't know much of what is happening here
@@ -194,6 +194,8 @@ non_critical_train.plot(kind='scatter', x='Sl.no', y='values', color='green', la
 
 ```
 
+We get this kind of output plot
+
 Now for the tree diagram
 
 ```Python
@@ -205,7 +207,9 @@ a = plot_tree(classifier,
               filled=True, rounded=True, fontsize=30, node_ids=True)
 ```
 
-Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
+We get this kind of tree diagram. 
+
+Here's the documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) it'll be very helpful
 
 ### Getting the final result 
 
@@ -227,7 +231,7 @@ Now we have our output which we got from the code by itself. If we want we can s
 
 Here's the output sample
 
-```Python
+```
 
 	Sl.no  LM    	   values        class
 0       1	1	  0.101473      critical
@@ -249,3 +253,28 @@ result_order_data = {'Sl.no':sl_no_test, 'LM':result_order['LM'].tolist(), 'valu
 result_order_dataframe = pd.DataFrame(result_order_data, columns = ['Sl.no', 'LM', 'values', 'class'])
 print(result_order_dataframe)
 ```
+
+and here's the sample output
+
+```
+    Sl.no  LM    values          class
+0       1  12  0.323621       critical
+1       2  20  0.228563       critical
+2       3  22  0.213246       critical
+3       4  15  0.196902       critical
+4       5   5  0.182670       critical
+5       6  17  0.179817       critical
+.
+.
+.
+35     36  14  0.022431   non-critical
+36     37  13  0.020233   non-critical
+37     38  27  0.018241   non-critical
+38     39  26  0.012403   non-critical
+39     40  41  0.011116   non-critical
+40     41  29  0.006553   non-critical
+
+```
+
+
+
