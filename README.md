@@ -81,13 +81,50 @@ col_max = dataset_test_lm.max()
 Sample Output
 
 ```
+#Sample output for col_max
 Lm1	0.101473
 Lm2 	0.055696
 Lm3 	0.087793
 Lm4 	0.030696
 Lm5 	0.182670
 ```
-     
+
+### Creating a proper Dataframe for the test data
+
+Now that we got the max values of each LM column. We can now make it better looking by creating a DataFrame with Sl.no, LM column number and it's values
+
+```Python
+Sl_no = []	#empty list
+for x in range(1,len(col_max)+1):   #iterating throuhgh length of col_max to get Sl.no
+    Sl_no.append(x)
+
+lm_head = []	#empty list
+for x in col_max.index:		#iterating through col.max index values to get LM column numbers
+    lm_head.append(int(x[2:]))	#Using String slicing removed LM and kept only number and also converted string to int
+    
+lm_values = []	#empty list
+for x in col_max:		#iterating through col_max itself would provide its values
+    lm_values.append(x)
+```
+
+Now we have list of Sl.no , LM and values. we can merge them all together into a dictonary and convert it into a DataFrame
+
+```Python
+data = {'Sl.no':Sl_no , 'LM':lm_head , 'values': lm_values}
+dataset_test = pd.DataFrame(data, columns = ['Sl.no','LM','values'])
+```
+
+Now we get our output something like this
+
+```
+       Sl.no    LM    	 values
+0       1   	1	0.101473
+1       2   	2	0.055696
+2       3   	3	0.087793
+3       4   	4	0.030696
+4       5   	5	0.182670
+5       6   	6	0.136450
+```
 
 Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
 
