@@ -34,10 +34,9 @@ dataset_test_lm = pd.DataFrame(table)
 
 col_max = dataset_test_lm.max()
 
-print(col_max)
 ### creating testing dataset ###
-Sl_no = []
 
+Sl_no = []
 for x in range(1,len(col_max)+1):
     Sl_no.append(x)
 
