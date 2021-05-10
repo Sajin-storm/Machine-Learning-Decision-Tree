@@ -194,7 +194,7 @@ non_critical_train.plot(kind='scatter', x='Sl.no', y='values', color='green', la
 
 ```
 
-We get this kind of output plot
+We get this kind of output [plot](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Train_Plot.png?raw=true)
 
 Now for the tree diagram
 
