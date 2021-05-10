@@ -194,7 +194,7 @@ non_critical_train.plot(kind='scatter', x='Sl.no', y='values', color='green', la
 
 ```
 
-We get this kind of output plot. 
+#### We get this kind of output plot. 
 ![Test Plot](/Sample output images/Train_Plot.png)
 
 Now for the tree diagram
@@ -208,7 +208,7 @@ a = plot_tree(classifier,
               filled=True, rounded=True, fontsize=30, node_ids=True)
 ```
 
-We get this kind of tree diagram. 
+#### We get this kind of tree diagram. 
 ![Tree_Diagram](/Sample output images/Tree_Diagram.png)
 
 Here's the documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) it'll be very helpful
