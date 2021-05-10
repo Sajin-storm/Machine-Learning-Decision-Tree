@@ -19,8 +19,25 @@ it's very easy to understand.
 Project is created with :
 * Spyder (Python 3.8)
 
-Test and Train Data is stored in :
+Test and Train Data is present in :
 * Excel (.xlsx format)
+
+####The code is completely written using python language
+
+
+## Code
+
+### Necessary imports
+
+```Python
+import pandas as pd
+import numpy as np
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+import matplotlib.pyplot as plt
+```
+
+
+
 
 Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
 

@@ -8,6 +8,7 @@ Created on Mon May 10 09:48:18 2021
 ###necessary imports###
 import pandas as pd
 import numpy as np
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 import matplotlib.pyplot as plt
 
 ### Training Dataset ###
@@ -83,7 +84,6 @@ features_test = dataset_test[['values']]
 x_test = np.asarray(features_test)
 
 ### Decision Tree ###
-from sklearn.tree import DecisionTreeClassifier, plot_tree
 
 classifier = DecisionTreeClassifier()
 classifier.fit(x_train,y_train)
