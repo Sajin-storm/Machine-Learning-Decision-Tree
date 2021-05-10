@@ -49,6 +49,28 @@ df1 = pd.read_excel('TestData.xlsx', sheet_name=['Line Outage (n-1)'])
 
 You can visit the documumentation page for [pd.read_excel](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html) if you want to know more 
 
+### Seperating LM values from the entire sheet
+
+If you can see from TestData.xlsx it doesn't contain only values related to what we need.
+It also has other values which we do not need. So, we need to extract the values which we need.
+
+```Python
+df1 = pd.read_excel('TestData.xlsx', sheet_name=['Line Outage (n-1)']) #reading entire data
+df = df1['Line Outage (n-1)'].head(41)  #cutting it down by 41 rows because the data we need is present only in 41 rows
+table = {}    #empty dictionary. 
+
+for i in range(1,42):        #for loop to iterate 41 times                
+    table['Lm'+str(i)] = df['Lm'+str(i)]  # find columns which begins with Lm and add it to the dictionary
+
+dataset_test_lm = pd.DataFrame(table)   #convert the dictionary to dataframe
+```
+You can go through these link's if you aren't aware of terms 
+[dictionary](https://www.w3schools.com/python/python_dictionaries.asp) 
+and [DataFrame](https://www.w3schools.com/datascience/ds_python_dataframe.asp).
+
+### Finding max values from each LM column 
+
+
 
 Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
 
