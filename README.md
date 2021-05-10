@@ -1,6 +1,6 @@
 # Machine-Learning-Decision-Tree
 
-##General info
+## General info
 
 we have a table with LM values and we have to classify them 
 we classify them into 3 groups
