@@ -1,5 +1,10 @@
 # Machine-Learning-Decision-Tree
 
+Disclaimer: I am just a student who has tried to study this on my own learning from various websites, documentation and vedios.
+Whatever is explained here is what I have understood myself. So, it may or maynot be correct .
+I'll provide with few links for some clarifications , if any furthur doubts arises you'll have to do your own research to clarify your own doubts.
+
+
 ## General info
 
 #### we have a table with some data 
@@ -126,6 +131,121 @@ Now we get our output something like this
 5       6   	6	0.136450
 ```
 
+## Machine learning things
+
+### Seperating features and classes for training and testing data
+
+Extracting features and class for training data. Here I have only values as the only features, if there is many features we can add as many as we need.
+And also the data is converted into array using numpy.
+
+```Python
+#we need to add features which would decide the possible output (class)
+features_train = dataset_train[['values']]  #we only have values as our feature
+#Sl.no is not a feature to determine our output
+#class is our output so no need to add it to features
+
+x_train = np.asarray(features_train)	#converting featues to array
+y_train = np.asarray(dataset_train['class'])	#getting classes and converting them to array
+#classes are non-critical, semi-critical and critical
+```
+similar way for testing data as well
+
+```Python
+features_test = dataset_test[['values']]
+
+x_test = np.asarray(features_test)
+
+#here we only have features because we need to find class using ML
+```
+
+###Decision Tree (ML algorithm)
+
+sklearn provides this machine learning algorithm. we import DecisionTreeClassifier from sklearn.tree.
+* And to be honest I don't know much of what is happening here
+
+```Python
+#initialsing Decision Tree Classifier
+classifier = DecisionTreeClassifier()
+#Providing Training data to Classifier
+classifier.fit(x_train,y_train)
+#Trying to predict the Output by Providing testing data
+y_predict = classifier.predict(x_test)
+
+```
+
+### Plots and Diagrams
+
+I've tried to get Plots for training data and testing data. Also the tree diagram for visualisation of whats happening.
+* matplotlib.pyplot provides features for plotting graphs.
+* sklearn.tree.plot_tree provides feature for plotting the tree diagram or flowchart.
+
+Here is the code for plotting Training data. For Test data look into my [code](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/DecisionTree_ML.py)
+
+```Python
+### distribution of classes ###
+semi_critical_train = dataset_train[dataset_train['class'] == 'semi-critical']	#getting all semi-critical values
+critical_train = dataset_train[dataset_train['class'] == 'critical']		#getting all critical values
+non_critical_train = dataset_train[dataset_train['class'] == 'non-critical']	#getting all non-critical values
+
+###plotting train graphs###
+axes = semi_critical_train.plot(kind='scatter', x='Sl.no', y='values', color='blue', label='semi-critical' ,title = 'Train Data Plot')
+critical_train.plot(kind='scatter', x='Sl.no', y='values', color='red', label='critical' ,ax=axes)
+non_critical_train.plot(kind='scatter', x='Sl.no', y='values', color='green', label='non-critical', ax=axes)
+
+```
+
+Now for the tree diagram
+
+```Python
+
+plt.figure(figsize=(30,20))
+a = plot_tree(classifier, 
+              feature_names = features_test.columns,	#the feature column heading names
+              class_names = result['class'].unique().tolist(), 	#classes 
+              filled=True, rounded=True, fontsize=30, node_ids=True)
+```
+
 Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
 
+### Getting the final result 
 
+So now the DecisionTreeCLassifier would have done it's job of classifying by it's own. We can see by what margin the classification has happened by seeing the tree diagram.
+
+y_predict will have the final output. So,I created a DataFrame with the output
+
+```Python
+sl_no_test = []		#empty array
+for i in range(1,len(y_predict_list)+1):	#similar iteration to get range of values for Sl.no
+    sl_no_test.append(i)
+
+data_list = {'Sl.no': sl_no_test ,'LM':lm_head, 'values': lm_values , 'class': y_predict_list}	#creating dictionary with Sl.no, LM, values and class that we got
+result = pd.DataFrame(data_list , columns = ['Sl.no', 'LM', 'values', 'class'])		#converting dictionary to DataFrame
+
+```
+
+Now we have our output which we got from the code by itself. If we want we can save it as a new excel sheet, I just kept it as it is.
+
+Here's the output sample
+
+```Python
+
+	Sl.no  LM    	   values        class
+0       1	1	  0.101473      critical
+1       2   	2	  0.055696  	semi-critical
+2       3   	3	  0.087793      critical
+3       4   	4	  0.030696   	non-critical
+4       5   	5	  0.182670      critical
+5       6   	6	  0.136450      critical
+
+```
+
+### Finally arranging the values in descending order
+
+I didn't know how to arrange a DataFrame in order. So created a new Dataframe and added values in descending order
+
+```Python
+result_order = result.sort_values(by=['values'], ascending=False)
+result_order_data = {'Sl.no':sl_no_test, 'LM':result_order['LM'].tolist(), 'values':result_order['values'].tolist(), 'class':result_order['class'].tolist()}
+result_order_dataframe = pd.DataFrame(result_order_data, columns = ['Sl.no', 'LM', 'values', 'class'])
+print(result_order_dataframe)
+```
