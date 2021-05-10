@@ -56,7 +56,9 @@ It also has other values which we do not need. So, we need to extract the values
 
 ```Python
 df1 = pd.read_excel('TestData.xlsx', sheet_name=['Line Outage (n-1)']) #reading entire data
+#The above line is of type Dictionary
 df = df1['Line Outage (n-1)'].head(41)  #cutting it down by 41 rows because the data we need is present only in 41 rows
+#The above line is of type DataFrame
 table = {}    #empty dictionary. 
 
 for i in range(1,42):        #for loop to iterate 41 times                
@@ -65,12 +67,24 @@ for i in range(1,42):        #for loop to iterate 41 times
 dataset_test_lm = pd.DataFrame(table)   #convert the dictionary to dataframe
 ```
 You can go through these link's if you aren't aware of terms 
-[dictionary](https://www.w3schools.com/python/python_dictionaries.asp) 
+[Dictionary](https://www.w3schools.com/python/python_dictionaries.asp) 
 and [DataFrame](https://www.w3schools.com/datascience/ds_python_dataframe.asp).
 
 ### Finding max values from each LM column 
 
+This is very simple. Just 1 line of code to find the max of each column.
 
+```Python
+col_max = dataset_test_lm.max()
+```
+
+Sample Output
+1. | Lm1 | 0.101473
+2. | Lm2 | 0.055696
+3. | Lm3 | 0.087793
+4. | Lm4 | 0.030696
+5. | Lm5 | 0.182670
+     
 
 Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
 
