@@ -35,8 +35,19 @@ import numpy as np
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 import matplotlib.pyplot as plt
 ```
+### Reading Excel files
 
+Pandas provides support to read data from excel sheets
+```Python
+dataset_train = pd.read_excel('TrainData.xlsx')
+```
+We can also use it to read different sheets within the given excel sheet
 
+```Python
+df1 = pd.read_excel('TestData.xlsx', sheet_name=['Line Outage (n-1)'])
+```
+
+You can visit the documumentation page for [pd.read_excel](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html) if you want to know more 
 
 
 Here's a documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html)
