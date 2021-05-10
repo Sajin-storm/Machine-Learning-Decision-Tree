@@ -4,6 +4,22 @@ Disclaimer: I am just a student who has tried to study this on my own learning f
 Whatever is explained here is what I have understood myself. So, it may or maynot be correct .
 I'll provide with few links for some clarifications , if any furthur doubts arises you'll have to do your own research to clarify your own doubts.
 
+##Table of contents
+
+* [General info]
+* [Technologies used]
+* [Code]
+	* [Necessary imports]
+	* [Reading Excel files]
+	* [Seperating LM values from the entire sheet]
+	* [Finding max values from each LM column]
+	* [Creating a proper Dataframe for the test data]
+* [Machine learning parts]
+	* [Seperating features and classes for training and testing data]
+	* [Decision Tree (ML algorithm)]
+	* [Plots and Diagrams]
+	* [Getting the final result]
+	* [Finally arranging the values in descending order]
 
 ## General info
 
@@ -20,7 +36,7 @@ I have used Decision Tree Classifier to classify
 because it provides visual support and 
 it's very easy to understand.
 
-## Technologies
+## Technologies used
 Project is created with :
 * Spyder (Python 3.8)
 
@@ -131,7 +147,7 @@ Now we get our output something like this
 5       6   	6	0.136450
 ```
 
-## Machine learning things
+## Machine learning parts
 
 ### Seperating features and classes for training and testing data
 
@@ -213,7 +229,7 @@ a = plot_tree(classifier,
 
 Here's the documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) it'll be very helpful
 
-### Getting the final result 
+### Getting the final result
 
 So now the DecisionTreeCLassifier would have done it's job of classifying by it's own. We can see by what margin the classification has happened by seeing the tree diagram.
 
