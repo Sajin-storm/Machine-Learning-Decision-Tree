@@ -312,6 +312,9 @@ Also plot of bar graph for the test data
 plt.bar( semi_critical_test['Line number'], semi_critical_test['LMN values'], color='blue',label='semi-critical')
 plt.bar( critical_test['Line number'], critical_test['LMN values'], color='red', label='critical')
 plt.bar( non_critical_test['Line number'], non_critical_test['LMN values'], color='green', label='non-critical')
+plt.xlabel('Line number')
+plt.ylabel('LMN value')
+plt.title('Bar graph Test data')
 plt.legend()
 plt.show()
 
