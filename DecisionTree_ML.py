@@ -139,7 +139,7 @@ semi_critical_test.plot( x='Line number', y='LMN values', color='blue', label='s
 critical_test.plot( x='Line number', y='LMN values', color='red', label='critical' ,ax=axes)
 non_critical_test.plot( x='Line number', y='LMN values', color='green', label='non-critical', ax=axes)
 
-result.plot(kind="bar", x='Line number', y='LMN values')
+result.plot(kind="bar", x='Line number', y='LMN values', title='LMN values test data')
 plt.show()
 
 """
@@ -153,6 +153,9 @@ non_critical_test.plot.bar( x='Line number', y='LMN values', color='green', labe
 plt.bar( semi_critical_test['Line number'], semi_critical_test['LMN values'], color='blue',label='semi-critical')
 plt.bar( critical_test['Line number'], critical_test['LMN values'], color='red', label='critical')
 plt.bar( non_critical_test['Line number'], non_critical_test['LMN values'], color='green', label='non-critical')
+plt.xlabel('Line number')
+plt.ylabel('LMN value')
+plt.title('Bar graph Test data')
 plt.legend()
 plt.show()
 
