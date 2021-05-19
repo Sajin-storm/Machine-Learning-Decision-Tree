@@ -33,7 +33,7 @@ dataset_test_lm = pd.DataFrame(table)
 
 ### finding max LM value from every LM column ###
 
-col_max = dataset_test_lm.max()
+col_max = dataset_test_lm.max(axis=0)
 
 ### creating testing dataset ###
 
