@@ -12,14 +12,15 @@
 	* [Necessary imports](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#necessary-imports)
 	* [Reading Excel files](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#reading-excel-files)
 	* [Seperating LMN values from the entire sheet](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-lmn-values-from-the-entire-sheet)
-	* [Finding max values from each LM column](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#finding-max-values-from-each-lm-column)
+	* [Finding max values from each LMN column](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#finding-max-values-from-each-lmn-column)
 	* [Creating a proper Dataframe for the test data](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#creating-a-proper-dataframe-for-the-test-data)
 * [Machine learning parts](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#machine-learning-parts)
 	* [Seperating features and classes for training and testing data](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-features-and-classes-for-training-and-testing-data)
 	* [Decision Tree (ML algorithm)](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-features-and-classes-for-training-and-testing-data)
-	* [Plots and Diagrams](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#plots-and-diagrams)
 	* [Getting the final result](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#getting-the-final-result)
 	* [Finally arranging the values in descending order](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#getting-the-final-result)
+	* [Plots and Diagrams](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#plots-and-diagrams)
+	
 
 ## General info
 
@@ -43,7 +44,7 @@ Project is created with :
 Test and Train Data is present in :
 * Excel (.xlsx format)
 
-#### The code is completely written using python language
+#### The code is completely written using python language.
 
 
 ## Code
@@ -55,17 +56,21 @@ import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 import matplotlib.pyplot as plt
+
 ```
 ### Reading Excel files
 
 Pandas provides support to read data from excel sheets
+
 ```Python
 dataset_train = pd.read_excel('TrainData.xlsx')
+
 ```
 We can also use the below code to read different sheets within the given excel sheet
 
 ```Python
 df1 = pd.read_excel('TestData.xlsx', sheet_name=['Line Outage (n-1)'])
+
 ```
 
 You can visit the documumentation page for [pd.read_excel](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html) if you want to know more 
@@ -86,17 +91,19 @@ for i in range(1,42):        #for loop to iterate 41 times
     table['Lm'+str(i)] = df['Lm'+str(i)]  # find columns which begins with Lm and add it to the dictionary
 
 dataset_test_lm = pd.DataFrame(table)   #convert the dictionary to dataframe
+
 ```
 You can go through these link's if you aren't aware of terms 
 [Dictionary](https://www.w3schools.com/python/python_dictionaries.asp) 
 and [DataFrame](https://www.w3schools.com/datascience/ds_python_dataframe.asp).
 
-### Finding max values from each LM column 
+### Finding max values from each LMN column 
 
 This is very simple. Just 1 line of code to find the max of each column.
 
 ```Python
-col_max = dataset_test_lm.max()
+col_max = dataset_test_lm.max(axis=0) #axis=0 is for finding max values column wise
+
 ```
 
 Sample Output
@@ -128,23 +135,24 @@ for x in col_max:		#iterating through col_max itself would provide its values
     lm_values.append(x)
 ```
 
-Now we have list of Sl.no , LM and values. we can merge them all together into a dictonary and convert it into a DataFrame
+Now we have list of Sl.no , Line number and LMN values. we can merge them all together into a dictonary and convert it into a DataFrame
 
 ```Python
-data = {'Sl.no':Sl_no , 'LM':lm_head , 'values': lm_values}
-dataset_test = pd.DataFrame(data, columns = ['Sl.no','LM','values'])
+data = {'Sl.no':Sl_no , 'Line number':lm_head , 'LMN values': lm_values}
+dataset_test = pd.DataFrame(data, columns = ['Sl.no','Line number','LMN values'])
+
 ```
 
 Now we get our output something like this
 
 ```
-       Sl.no    LM    	 values
-0       1   	1	0.101473
-1       2   	2	0.055696
-2       3   	3	0.087793
-3       4   	4	0.030696
-4       5   	5	0.182670
-5       6   	6	0.136450
+       Sl.no    Line number    LMN values
+0       1   		1	0.101473
+1       2   		2	0.055696
+2       3   		3	0.087793
+3       4   		4	0.030696
+4       5   		5	0.182670
+5       6   		6	0.136450
 ```
 
 ## Machine learning parts
@@ -155,19 +163,21 @@ Extracting features and class for training data. Here I have only values as the 
 And also the data is converted into array using numpy.
 
 ```Python
+
 #we need to add features which would decide the possible output (class)
-features_train = dataset_train[['values']]  #we only have values as our feature
+features_train = dataset_train[['LMN values']]  #we only have values as our feature
 #Sl.no is not a feature to determine our output
 #class is our output so no need to add it to features
 
 x_train = np.asarray(features_train)	#converting featues to array
 y_train = np.asarray(dataset_train['class'])	#getting classes and converting them to array
 #classes are non-critical, semi-critical and critical
+
 ```
 similar way for testing data as well
 
 ```Python
-features_test = dataset_test[['values']]
+features_test = dataset_test[['LMN values']]
 
 x_test = np.asarray(features_test)
 
@@ -180,6 +190,7 @@ sklearn provides this machine learning algorithm. we import DecisionTreeClassifi
 * And to be honest I don't know much of what is happening here
 
 ```Python
+
 #initialsing Decision Tree Classifier
 classifier = DecisionTreeClassifier()
 #Providing Training data to Classifier
@@ -189,49 +200,9 @@ y_predict = classifier.predict(x_test)
 
 ```
 
-### Plots and Diagrams
-
-I've tried to get Plots for training data and testing data. Also the tree diagram for visualisation of whats happening.
-* matplotlib.pyplot provides features for plotting graphs.
-* sklearn.tree.plot_tree provides feature for plotting the tree diagram or flowchart.
-
-Here is the code for plotting Training data. For Test data look into my [code](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/DecisionTree_ML.py)
-
-```Python
-### distribution of classes ###
-semi_critical_train = dataset_train[dataset_train['class'] == 'semi-critical']	#getting all semi-critical values
-critical_train = dataset_train[dataset_train['class'] == 'critical']		#getting all critical values
-non_critical_train = dataset_train[dataset_train['class'] == 'non-critical']	#getting all non-critical values
-
-###plotting train graphs###
-axes = semi_critical_train.plot(kind='scatter', x='Sl.no', y='values', color='blue', label='semi-critical' ,title = 'Train Data Plot')
-critical_train.plot(kind='scatter', x='Sl.no', y='values', color='red', label='critical' ,ax=axes)
-non_critical_train.plot(kind='scatter', x='Sl.no', y='values', color='green', label='non-critical', ax=axes)
-
-```
-
-#### We get this kind of output plot. 
-![Test Plot](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Train_Plot.png?raw=true)
-
-Now for the tree diagram
-
-```Python
-
-plt.figure(figsize=(30,20))
-a = plot_tree(classifier, 
-              feature_names = features_test.columns,	#the feature column heading names
-              class_names = result['class'].unique().tolist(), 	#classes 
-              filled=True, rounded=True, fontsize=30, node_ids=True)
-```
-
-#### We get this kind of tree diagram. 
-![Tree_Diagram](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Tree_Diagram.png?raw=true)
-
-Here's the documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) it'll be very helpful
-
 ### Getting the final result
 
-So now the DecisionTreeCLassifier would have done it's job of classifying by it's own. We can see by what margin the classification has happened by seeing the tree diagram.
+So now the DecisionTreeClassifier would have done it's job of classifying by it's own. We can see by what margin the classification has happened by seeing the tree diagram.
 
 y_predict will have the final output. So,I created a DataFrame with the output
 
@@ -240,8 +211,8 @@ sl_no_test = []		#empty array
 for i in range(1,len(y_predict_list)+1):	#similar iteration to get range of values for Sl.no
     sl_no_test.append(i)
 
-data_list = {'Sl.no': sl_no_test ,'LM':lm_head, 'values': lm_values , 'class': y_predict_list}	#creating dictionary with Sl.no, LM, values and class that we got
-result = pd.DataFrame(data_list , columns = ['Sl.no', 'LM', 'values', 'class'])		#converting dictionary to DataFrame
+data_list = {'Sl.no': sl_no_test ,'Line number':lm_head, 'LMN values': lm_values , 'class': y_predict_list}
+result = pd.DataFrame(data_list , columns = ['Sl.no', 'Line number', 'LMN values', 'class'])
 
 ```
 
@@ -251,13 +222,13 @@ Here's the output sample
 
 ```
 
-	Sl.no  LM    	   values        class
-0       1	1	  0.101473      critical
-1       2   	2	  0.055696  	semi-critical
-2       3   	3	  0.087793      critical
-3       4   	4	  0.030696   	non-critical
-4       5   	5	  0.182670      critical
-5       6   	6	  0.136450      critical
+	Sl.no  Line number     LMN values    class
+0       1		1	0.101473   critical
+1       2   		2	0.055696   semi-critical
+2       3   		3	0.087793   critical
+3       4   		4	0.030696   non-critical
+4       5   		5	0.182670   critical
+5       6   		6	0.136450   critical
 
 ```
 
@@ -266,33 +237,109 @@ Here's the output sample
 I didn't know how to arrange a DataFrame in order. So created a new Dataframe and added values in descending order
 
 ```Python
-result_order = result.sort_values(by=['values'], ascending=False)
-result_order_data = {'Sl.no':sl_no_test, 'LM':result_order['LM'].tolist(), 'values':result_order['values'].tolist(), 'class':result_order['class'].tolist()}
-result_order_dataframe = pd.DataFrame(result_order_data, columns = ['Sl.no', 'LM', 'values', 'class'])
+
+result_order = result.sort_values(by=['LMN values'], ascending=False)
+result_order_data = {'Sl.no':sl_no_test, 'Line number':result_order['Line number'].tolist(), 'LMN values':result_order['LMN values'].tolist(), 'class':result_order['class'].tolist()}
+result_order_dataframe = pd.DataFrame(result_order_data, columns = ['Sl.no', 'Line number', 'LMN values', 'class'])
 print(result_order_dataframe)
+
 ```
 
 and here's the sample output
 
 ```
-    Sl.no  LM    values          class
-0       1  12  0.323621       critical
-1       2  20  0.228563       critical
-2       3  22  0.213246       critical
-3       4  15  0.196902       critical
-4       5   5  0.182670       critical
-5       6  17  0.179817       critical
+    Sl.no  Line number  LMN values      class
+0       1  	12  	 0.323621       critical
+1       2  	20  	 0.228563       critical
+2       3  	22  	 0.213246       critical
+3       4  	15  	 0.196902       critical
+4       5  	 5  	 0.182670       critical
+5       6  	17  	 0.179817       critical
 .
 .
 .
-35     36  14  0.022431   non-critical
-36     37  13  0.020233   non-critical
-37     38  27  0.018241   non-critical
-38     39  26  0.012403   non-critical
-39     40  41  0.011116   non-critical
-40     41  29  0.006553   non-critical
+35     36  	14  	 0.022431   non-critical
+36     37  	13  	 0.020233   non-critical
+37     38  	27  	 0.018241   non-critical
+38     39  	26  	 0.012403   non-critical
+39     40  	41  	 0.011116   non-critical
+40     41  	29  	 0.006553   non-critical
 
 ```
 
+### Plots and Diagrams
+
+I've tried to get Plots for training data and testing data. Also the tree diagram for visualisation of whats happening.
+* matplotlib.pyplot provides features for plotting graphs.
+* sklearn.tree.plot_tree provides feature for plotting the tree diagram or flowchart.
+
+Here is the code for plotting Training data and Testing Data
+```Python
+
+### distribution of classes ###
+semi_critical_train = dataset_train[dataset_train['class'] == 'semi-critical']	#getting all semi-critical values
+critical_train = dataset_train[dataset_train['class'] == 'critical']		#getting all critical values
+non_critical_train = dataset_train[dataset_train['class'] == 'non-critical']	#getting all non-critical values
+
+###plotting train graphs###
+axes = semi_critical_train.plot(kind='scatter', x='Line number', y='LMN values', color='blue', title = 'Train Data Plot')
+critical_train.plot(kind='scatter', x='Line number', y='LMN values', color='red', ax=axes)
+non_critical_train.plot(kind='scatter', x='Line number', y='LMN values', color='green',  ax=axes)
+
+##After ML code is done
+
+### distribution of classes ###
+semi_critical_test = result[result['class'] == 'semi-critical']
+critical_test = result[result['class'] == 'critical']
+non_critical_test = result[result['class'] == 'non-critical']
+
+###plotting test graphs###
+axes = semi_critical_test.plot(kind='scatter', x='Line number', y='LMN values', color='blue', title = 'Test Data Plot')
+critical_test.plot(kind='scatter', x='Line number', y='LMN values', color='red', ax=axes)
+non_critical_test.plot(kind='scatter', x='Line number', y='LMN values', color='green', ax=axes)
+
+```
+
+#### We get this kind of output plot. 
+![Train Plot](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Train_Plot.png?raw=true)
+![Test Plot](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Test_Plot.png?raw=true)
+
+Also plot of bar graph for the test data
+
+```Python
+
+###bar graph ###
+plt.bar( semi_critical_test['Line number'], semi_critical_test['LMN values'], color='blue',label='semi-critical')
+plt.bar( critical_test['Line number'], critical_test['LMN values'], color='red', label='critical')
+plt.bar( non_critical_test['Line number'], non_critical_test['LMN values'], color='green', label='non-critical')
+plt.legend()
+plt.show()
+
+```
+#### We get this kind of output plot.
+![Bar Graph](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Bar_Graph.png?raw=true)
+
+Now for the tree diagram
+
+```Python
+
+### visualising decision tree ###
+
+result_classifier = DecisionTreeClassifier()
+result_classifier.fit(x_test,y_predict)
+
+plt.figure(figsize=(30,20))
+a = plot_tree(result_classifier, 
+              feature_names = features_test.columns,
+              class_names = ['critical','non-critical','semi-critical'],#result['class'].unique().tolist(), 
+              filled=True, rounded=True, fontsize=30, node_ids=True, impurity=(False))
+plt.show()
+
+```
+
+#### We get this kind of tree diagram. 
+![Tree_Diagram](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree/blob/main/Sample%20output%20images/Tree_Diagram.png?raw=true)
+
+Here's the documentation for [plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html) it'll be very helpful
 
 
