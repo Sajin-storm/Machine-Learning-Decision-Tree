@@ -1,8 +1,8 @@
 # Machine-Learning-Decision-Tree
 
-Disclaimer: I am just a student who has tried to study this on my own learning from various websites, documentation and vedios.
-Whatever is explained here is what I have understood myself. So, it may or maynot be correct .
-I'll provide with few links for some clarifications , if any furthur doubts arises you'll have to do your own research to clarify your own doubts.
+>Disclaimer: I am just a student who has tried to study this on my own learning from various websites, documentation and vedios.
+>Whatever is explained here is what I have understood myself. So, it may or maynot be correct .
+>I'll provide with few links for some clarifications , if any furthur doubts arises you'll have to do your own research to clarify your own doubts.
 
 ## Table of contents
 
@@ -11,7 +11,7 @@ I'll provide with few links for some clarifications , if any furthur doubts aris
 * [Code](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#code)
 	* [Necessary imports](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#necessary-imports)
 	* [Reading Excel files](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#reading-excel-files)
-	* [Seperating LM values from the entire sheet](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-lm-values-from-the-entire-sheet)
+	* [Seperating LMN values from the entire sheet](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-lm-values-from-the-entire-sheet)
 	* [Finding max values from each LM column](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#finding-max-values-from-each-lm-column)
 	* [Creating a proper Dataframe for the test data](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#creating-a-proper-dataframe-for-the-test-data)
 * [Machine learning parts](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#machine-learning-parts)
@@ -24,7 +24,7 @@ I'll provide with few links for some clarifications , if any furthur doubts aris
 ## General info
 
 #### we have a table with some data 
-* we need to seperately get only the LM values columns 
+* we need to seperately get only the LMN values columns 
 * Find the max in each column
 * Then we need to classify them into 3 groups
 	* non-critical
@@ -62,7 +62,7 @@ Pandas provides support to read data from excel sheets
 ```Python
 dataset_train = pd.read_excel('TrainData.xlsx')
 ```
-We can also use it to read different sheets within the given excel sheet
+We can also use the below code to read different sheets within the given excel sheet
 
 ```Python
 df1 = pd.read_excel('TestData.xlsx', sheet_name=['Line Outage (n-1)'])
@@ -70,7 +70,7 @@ df1 = pd.read_excel('TestData.xlsx', sheet_name=['Line Outage (n-1)'])
 
 You can visit the documumentation page for [pd.read_excel](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html) if you want to know more 
 
-### Seperating LM values from the entire sheet
+### Seperating LMN values from the entire sheet
 
 If you can see from TestData.xlsx it doesn't contain only values related to what we need.
 It also has other values which we do not need. So, we need to extract the values which we need.
