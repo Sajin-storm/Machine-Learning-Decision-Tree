@@ -11,7 +11,7 @@
 * [Code](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#code)
 	* [Necessary imports](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#necessary-imports)
 	* [Reading Excel files](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#reading-excel-files)
-	* [Seperating LMN values from the entire sheet](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-lm-values-from-the-entire-sheet)
+	* [Seperating LMN values from the entire sheet](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#seperating-lmn-values-from-the-entire-sheet)
 	* [Finding max values from each LM column](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#finding-max-values-from-each-lm-column)
 	* [Creating a proper Dataframe for the test data](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#creating-a-proper-dataframe-for-the-test-data)
 * [Machine learning parts](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#machine-learning-parts)
