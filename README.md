@@ -31,7 +31,7 @@
 	* non-critical
 	* semi-critical
 	* critical
-*Finally we need to sort it in descending order
+* Finally we need to sort it in descending order
 
 I have used Decision Tree Classifier to classify 
 because it provides visual support and 
