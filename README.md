@@ -4,6 +4,8 @@
 >Whatever is explained here is what I have understood myself. So, it may or maynot be correct .
 >I'll provide with few links for some clarifications , if any furthur doubts arises you'll have to do your own research to clarify your own doubts.
 
+>This is still in development. Changes can be made to the code or data at any time
+
 ## Table of contents
 
 * [General info](https://github.com/Sajin-storm/Machine-Learning-Decision-Tree#general-info)
